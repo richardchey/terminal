@@ -4,13 +4,19 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'fatih/vim-go'
-Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-surround'
 Plug 'SirVer/ultisnips'
-Plug 'scrooloose/nerdtree'
-Plug 'majutsushi/tagbar'
-Plug 'kien/ctrlp.vim'
 Plug 'Valloric/YouCompleteMe'
+Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
+Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-git'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'kien/ctrlp.vim'
+
 
 " Initialize plugin system
 call plug#end()
@@ -18,7 +24,8 @@ call plug#end()
 
 
 " set mapleader
-let mapleader = ","
+let mapleader = "," 
+
 
 " vim-go custom mappings
 au FileType go nmap <Leader>s <Plug>(go-implements)
@@ -32,21 +39,82 @@ au FileType go nmap <leader>c <Plug>(go-coverage)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
-" au FileType go nmap <Leader>e <Plug>(go-rename)
+au FileType go nmap <Leader>e <Plug>(go-rename)
+
 
 " vim-go settings
 let g:go_fmt_command = "goimports"
+let g:go_highlight_types = 1 
+let g:go_highlight_fields = 1 
+let g:go_highlight_functions = 1 
+let g:go_highlight_methods = 1 
+let g:go_highlight_operators = 1 
+colorscheme slate
+
 
 " YCM settings
-let g:ycm_key_list_select_completion=['<c-n>','<Down>']
-let g:ycm_key_list_previous_completion=['<c-p>','<Up>']
-let g:ycm_complete_in_strings=0
+let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
+let g:ycm_complete_in_strings = 0
+
 
 " UltiSnips settings
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-nmap <F7> :NERDTreeToggle<CR>
-nmap <F8> :TagbarToggle<CR>
+
+" tagbar
+nmap <F9> :TagbarToggle<CR>
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+            \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
+
+
+" nerdtree
+nmap <F8> :NERDTreeToggle<CR>
+
+
+"remember last update or view postion"
+ " Only do this part when compiled with support for autocommands 
+ if has("autocmd")
+ " In text files, always limit the width of text to 78 characters 
+ autocmd BufRead *.txt set tw=78
+ " When editing a file, always jump to the last cursor position 
+ autocmd BufReadPost *
+ \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+ \ exe "normal g'\"" |
+ \ endif
+ endif
+
+
+
+set expandtab tabstop=4 softtabstop=4 shiftwidth=4 number
+set showmatch  matchtime=1 completeopt=longest,menu
+
+
 set pastetoggle=<F10>
