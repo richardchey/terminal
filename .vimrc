@@ -112,9 +112,12 @@ nmap <F8> :NERDTreeToggle<CR>
  endif
 
 
-
-set expandtab tabstop=4 softtabstop=4 shiftwidth=4 number
 set showmatch  matchtime=1 completeopt=longest,menu
-
+autocmd FileType php,python,c,java,perl,shell,bash,vim,ruby,cpp,go set sw=4
+autocmd FileType php,python,c,java,perl,shell,bash,vim,ruby,cpp,go set ts=4
+autocmd FileType php,python,c,java,perl,shell,bash,vim,ruby,cpp,go set sts=4
+autocmd FileType html,css,xml,yaml,javascript set sw=2
+autocmd FileType html,css,xml,yaml,javascript set ts=2
+autocmd FileType html,css,xml,yaml,javascript set sts=2
 
 set pastetoggle=<F10>
