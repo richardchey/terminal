@@ -112,12 +112,10 @@ nmap <F8> :NERDTreeToggle<CR>
  endif
 
 
+set incsearch number noexpandtab
 set showmatch  matchtime=1 completeopt=longest,menu
-autocmd FileType php,python,c,java,perl,shell,bash,vim,ruby,cpp,go set sw=4
-autocmd FileType php,python,c,java,perl,shell,bash,vim,ruby,cpp,go set ts=4
-autocmd FileType php,python,c,java,perl,shell,bash,vim,ruby,cpp,go set sts=4
-autocmd FileType html,css,xml,yaml,javascript set sw=2
-autocmd FileType html,css,xml,yaml,javascript set ts=2
-autocmd FileType html,css,xml,yaml,javascript set sts=2
+autocmd FileType go set sw=8 ts=8 sts=8
+autocmd FileType php,python,c,java,perl,shell,bash,vim,ruby,cpp set sw=4 ts=4 sts=4
+autocmd FileType html,css,xml,yaml,javascript set sw=2 ts=2 sts=2
 
 set pastetoggle=<F10>
