@@ -153,7 +153,7 @@ let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml',
 
 
 " airline
-" set laststatus=2
+set laststatus=2
 if !has('gui_running')
   set t_Co=256
 endif
