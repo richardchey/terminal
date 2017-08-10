@@ -30,7 +30,7 @@ call plug#end()
 
 
 
-" vim-go custom mappings
+" vim-go settings
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
@@ -44,9 +44,6 @@ au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 au FileType go nmap <Leader>e <Plug>(go-rename)
 
-
-
-" vim-go settings
 let g:go_fmt_command="goimports"
 let g:go_highlight_types=1
 let g:go_highlight_fields=1
@@ -74,9 +71,9 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 
 " syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 "
 " let g:syntastic_always_populate_loc_list=1
 " let g:syntastic_auto_loc_list=1
@@ -190,7 +187,7 @@ autocmd FileType html,css,xml,yaml,javascript set sw=2 ts=2 sts=2
 set history=2000
 
 " 突出显示当前行
-set cursorline
+" set cursorline
 
 " 00x增减数字时使用十进制
 set nrformats=
